@@ -25,6 +25,14 @@ def predict_api():
     output=regmodel.predict(new_data)
     print(output[0])
     return jsonify(output[0])
+
+@app.route('/predict',methods=['POST'])
+def predict():
+    data=[float(x) for x in request.form.values()]
+    final_input=scaler.transform(np.array(data).reshape(1,-1))
+    print(final_input)
+    output=regmodel.predict(final_input)
+    return render_template("home.html",prediction_text="the house price prediction is {}".format(output))
 # runnng our created name app by making conditions like euqls to main app
 if __name__ == "__main__":
     app.run(debug=True)
