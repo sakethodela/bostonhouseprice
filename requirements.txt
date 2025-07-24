@@ -3,3 +3,6 @@ pandas
 numpy
 scikit-learn
 matplotlib
+ipython
+ipython-genutils
+sqlalchemy>=2.0
